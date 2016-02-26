@@ -10,8 +10,8 @@ ENV \
   JS_DB_HOST=jasper.db \
   JS_DB_USER=jasper \
   JS_DB_PASSWORD=my_password \
-  JASPERSERVER_HOME /jasperserver \
-  JASPERSERVER_BUILD /jasperserver/buildomatic
+  JASPERSERVER_HOME=/jasperserver \
+  JASPERSERVER_BUILD=/jasperserver/buildomatic
 
 RUN \
   apt-get update && \
