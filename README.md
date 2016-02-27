@@ -1,12 +1,12 @@
 # Jasper Server [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/monitoringartist/jasperserver-xxl) [![](https://badge.imagelayers.io/monitoringartist/jasperserver-xxl:latest.svg)](https://imagelayers.io/?images=monitoringartist/jasperserver-xxl:latest)
 
-Dockerized TIBCO JasperReports Server Community Edition. Quick start:
+Dockerized [TIBCO JasperReports Server Community Edition](http://community.jaspersoft.com/download). Quick start:
 
 ```
 # Start persistent container storage for database
 docker run -d -v /var/lib/mysql --name jasperserver-db-storage busybox:latest
 
-# Start database - MariaDB
+# Start database - MariaDB (note: no Zabbix data are included in the Docker image)
 docker run \
     -d \
     --name jasperserver-db \
