@@ -1,6 +1,6 @@
 # Dockerized TIBCO JasperReports Server Community Edition [![](https://badge.imagelayers.io/monitoringartist/jasper-xxl:latest.svg)](https://imagelayers.io/?images=monitoringartist/jasper-xxl:latest)
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/raintank/jasper-xxl)
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/monitoringartist/jasper-xxl)
 
 Quick start:
 
