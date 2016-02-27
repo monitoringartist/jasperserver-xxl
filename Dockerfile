@@ -15,13 +15,12 @@ ENV \
 
 RUN \
   apt-get update && \
-  apt-get install -y vim && \  
+  apt-get install -y vim netcat unzip && \  
   curl -SL http://sourceforge.net/projects/jasperserver/files/JasperServer/JasperReports%20Server%20Community%20Edition%20${VERSION}/jasperreports-server-cp-${VERSION}-bin.zip -o /tmp/jasperserver.zip && \
-  unzip /tmp/jasperserver.zip -d /usr/src/ && \
-  mv /usr/src/jasperreports-server-cp-${VERSION}-bin /jasperreports-server && \
+  unzip /tmp/jasperserver.zip -d $JASPERSERVER_HOME && \
+  mv /usr/src/jasperreports-server-cp-${VERSION}-bin $JASPERSERVER_HOME && \
   rm -rf /tmp/* && \
-  rm -rf /var/lib/apt/lists/* && \
-  chmod +x entrypoint.sh
+  rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /
 
