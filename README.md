@@ -58,7 +58,7 @@ You can use environment variables to configure JasperServer container:
 
 # Integrations
 
-* [docker-compose for dockerized raintank-collector](https://github.com/monitoringartist/jasperserver-xxl/blob/master/docker-compose.yml)
+* [docker-compose for dockerized jasperserver-xxl](https://github.com/monitoringartist/jasperserver-xxl/blob/master/docker-compose.yml)
 
 # Author
 
