@@ -8,17 +8,15 @@ docker run -d -v /var/lib/mysql --name jasperserver-db-storage busybox:latest
 
 # Start database - MariaDB (note: no Zabbix data are included in the Docker image)
 docker run \
-    -d \
     --name jasperserver-db \
     -v /etc/localtime:/etc/localtime:ro \
     --volumes-from jasperserver-db-storage \
     --env="MARIADB_USER=jasper" \
     --env="MARIADB_PASS=my_password" \
-    zabbix/zabbix-db-mariadb:latest
+    -d zabbix/zabbix-db-mariadb:latest
 
 # Start JasperServer    
 docker run \
-    -d \
     --name jasperserver \
     -p 8080:8080 \
     -v /etc/localtime:/etc/localtime:ro \
@@ -26,7 +24,7 @@ docker run \
     --env="JS_DB_HOST=jasper.db" \
     --env="JS_DB_USER=jasper" \
     --env="JS_DB_PASSWORD=my_password" \
-    monitoringartist/jasper-xxl:latest
+    -d monitoringartist/jasperserver-xxl:latest
 
 # Starting and autodeployment can take 5-7 minutes, be patient
 # You can watch progres and issuers in logs
