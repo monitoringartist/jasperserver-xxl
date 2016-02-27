@@ -1,0 +1,27 @@
+jasperserver-db-storage:
+  image: busybox:latest
+  volumes:
+    - /var/lib/mysql
+
+jasperserver-db:
+  image: zabbix/zabbix-db-mariadb
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+  volumes_from:
+    - jasperserver-db-storage
+  environment:
+    - MARIADB_USER=jasper
+    - MARIADB_PASS=my_password
+
+jasperserver:
+  image: monitoringartist/jasperserver-xxl:latest
+  ports:
+    - "8080:8080"
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+  links:
+    - jasperserver-db:jasper.db
+  environment:
+    - JS_DB_HOST=jasper.db
+    - JS_DB_USER=jasper
+    - JS_DB_PASSWORD=my_password
