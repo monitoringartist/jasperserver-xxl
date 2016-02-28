@@ -27,11 +27,11 @@ docker run \
     -d monitoringartist/jasperserver-xxl:latest
 
 # Starting and autodeployment can take 5-7 minutes, be patient
-# You can watch progres and issuers in logs
+# You can watch progres and issues in logs
 docker logs -f jasperserver
 ```
 
-JasperServer will be available on URL http://<YOUR DOCKER HOST IP>:8080/jasperserver
+JasperServer will be available on URL `http://<YOUR DOCKER HOST IP>:8080/jasperserver`.
 Default credentials `jasperadmin/jasperadmin`.
 
 Please donate to author, so he can continue to publish other awesome projects 
