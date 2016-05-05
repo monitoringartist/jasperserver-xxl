@@ -13,7 +13,8 @@ ENV \
   JS_DB_USER=jasper \
   JS_DB_PASSWORD=my_password \
   JASPERSERVER_HOME=/jasperserver \
-  JASPERSERVER_BUILD=/jasperserver/buildomatic
+  JASPERSERVER_BUILD=/jasperserver/buildomatic \
+  JS_ENABLE_SAVE_TO_HOST_FS=false
   
 COPY entrypoint.sh /  
 
