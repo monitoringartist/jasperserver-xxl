@@ -7,7 +7,7 @@ setup_jasperserver() {
     JS_DB_USER=${JS_DB_USER:-jasper}
     JS_DB_PASSWORD=${JS_DB_PASSWORD:-my_password}
     JS_DB_PORT=${JS_DB_PORT:-3306}
-
+    JS_ENABLE_SAVE_TO_HOST_FS=${JS_ENABLE_SAVE_TO_HOST_FS:-false}
     pushd ${JASPERSERVER_BUILD}
     cp sample_conf/${JS_DB_TYPE}_master.properties default_master.properties
     sed -i -e "s|^appServerDir.*$|appServerDir = $CATALINA_HOME|g; s|^dbHost.*$|dbHost=$JS_DB_HOST|g; s|^dbUsername.*$|dbUsername=$JS_DB_USER|g; s|^dbPassword.*$|dbPassword=$JS_DB_PASSWORD|g" default_master.properties
@@ -18,6 +18,11 @@ setup_jasperserver() {
         ./js-ant $i
     done
 
+    if [ "${JS_ENABLE_SAVE_TO_HOST_FS}" = "true" ]; then
+    	# Change the value of enableSaveToHostFS to true
+    	sed -i "s/\(<property name=\"enableSaveToHostFS\" value=\"\).*\(\"\/>\)/\1${JS_ENABLE_SAVE_TO_HOST_FS}\2/" /usr/local/tomcat/webapps/jasperserver/WEB-INF/applicationContext.xml
+    fi
+    
     popd
 }
 
