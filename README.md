@@ -10,6 +10,7 @@ docker run -d -v /var/lib/mysql --name jasperserver-db-storage busybox:latest
 docker run \
     --name jasperserver-db \
     -v /etc/localtime:/etc/localtime:ro \
+    -v /etc/timezone:/etc/timezone:ro \
     --volumes-from jasperserver-db-storage \
     --env="MARIADB_USER=jasper" \
     --env="MARIADB_PASS=my_password" \
@@ -20,6 +21,7 @@ docker run \
     --name jasperserver \
     -p 8080:8080 \
     -v /etc/localtime:/etc/localtime:ro \
+    -v /etc/timezone:/etc/timezone:ro \
     --link jasperserver-db:jasper.db \
     --env="JS_DB_HOST=jasper.db" \
     --env="JS_DB_USER=jasper" \
