@@ -53,6 +53,8 @@ You can use environment variables to configure JasperServer container:
 | JS_Xmx | 512m | |
 | JS_MaxPermSize | 256m | |
 | JS_CATALINA_OPTS | -XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC -XX:+CMSIncrementalMode -XX:+CMSIncrementalPacing -XX:+CMSParallelRemarkEnabled -XX:+UseCompressedOops -XX:+UseCMSInitiatingOccupancyOnly | |
+| JS_ENABLE_SAVE_TO_HOST_FS | false | This enable the scheduled reports to be saved in the host |
+
 
 # Integrations
 
