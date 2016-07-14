@@ -2,7 +2,7 @@ FROM tomcat:7
 MAINTAINER Jan Garaj info@monitoringartist.com
 
 ENV \
-  JS_VERSION=6.3.0 \
+  JS_VERSION=6.2.1 \
   JS_Xmx=512m \
   JS_MaxPermSize=256m \
   JS_CATALINA_OPTS="-XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC -XX:+CMSIncrementalMode -XX:+CMSIncrementalPacing -XX:+CMSParallelRemarkEnabled -XX:+UseCompressedOops -XX:+UseCMSInitiatingOccupancyOnly" \
