@@ -12,6 +12,16 @@ setup_jasperserver() {
     cp sample_conf/${JS_DB_TYPE}_master.properties default_master.properties
     sed -i -e "s|^appServerDir.*$|appServerDir = $CATALINA_HOME|g; s|^dbHost.*$|dbHost=$JS_DB_HOST|g; s|^dbUsername.*$|dbUsername=$JS_DB_USER|g; s|^dbPassword.*$|dbPassword=$JS_DB_PASSWORD|g" default_master.properties
     
+    JS_MAIL_HOST=${JS_MAIL_HOST:-mail.example.com}
+    JS_MAIL_PORT=${JS_MAIL_PORT:-25}
+    JS_MAIL_PROTOCOL=${JS_MAIL_PROTOCOL:-smtp}
+    JS_MAIL_USERNAME=${JS_MAIL_USERNAME:-admin}
+    JS_MAIL_PASSWORD=${JS_MAIL_PASSWORD:-password}
+    JS_MAIL_SENDER=${JS_MAIL_SENDER:-admin@example.com}
+    JS_WEB_DEPLOYMENT_URI=${JS_WEB_DEPLOYMENT_URI:-http://localhost:8080/jasperserver}
+
+    sed -i -e "s|^# quartz\.mail\.sender\.host.*$|quartz.mail.sender.host = $JS_MAIL_HOST|g; s|^# quartz\.mail\.sender\.port.*$|quartz.mail.sender.port = $JS_MAIL_PORT|g; s|^# quartz\.mail\.sender\.protocol.*$|quartz.mail.sender.protocol = $JS_MAIL_PROTOCOL|g; s|^# quartz\.mail\.sender\.username.*$|quartz.mail.sender.username = $JS_MAIL_USERNAME|g; s|^# quartz\.mail\.sender\.password.*$|quartz.mail.sender.username = $JS_MAIL_PASSWORD|g; s|^# quartz\.mail\.sender\.from.*$|quartz.mail.sender.from = $JS_MAIL_SENDER|g; s|^# quartz\.web\.deployment\.uri.*$|quartz.web.deployment.uri = $JS_WEB_DEPLOYMENT_URI|g" default_master.properties
+    
     # DB seeding
     ./js-ant create-js-db init-js-db-ce import-minimal-ce || true
     for i in $@; do
