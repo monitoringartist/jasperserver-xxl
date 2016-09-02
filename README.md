@@ -54,7 +54,13 @@ You can use environment variables to configure JasperServer container:
 | JS_MaxPermSize | 256m | |
 | JS_CATALINA_OPTS | -XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC -XX:+CMSIncrementalMode -XX:+CMSIncrementalPacing -XX:+CMSParallelRemarkEnabled -XX:+UseCompressedOops -XX:+UseCMSInitiatingOccupancyOnly | |
 | JS_ENABLE_SAVE_TO_HOST_FS | false | This enable the scheduled reports to be saved in the host |
-
+| JS_MAIL_HOST | mail.example.com | |
+| JS_MAIL_PORT | 25 | |
+| JS_MAIL_PROTOCOL | smtp | |
+| JS_MAIL_USERNAME | admin | |
+| JS_MAIL_PASSWORD | password | |
+| JS_MAIL_SENDER | admin@example.com | |
+| JS_WEB_DEPLOYMENT_URI | http://localhost:8080/jasperserver | |
 
 # Integrations
 
