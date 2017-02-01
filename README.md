@@ -3,6 +3,7 @@
 # Jasper Server
 
 [![DockerHub pulls](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Pulls)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg)
+[![DockerHub stars](https://img.shields.io/docker/stars/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Stars)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg)
 
 Dockerized [TIBCO JasperReports Server Community Edition](http://community.jaspersoft.com/download). Quick start:
 
