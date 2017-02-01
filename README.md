@@ -41,13 +41,17 @@ for free:
 
 # Configuration
 
+Create a user in your database. The container will create the database if it
+does not alrady exist. For PostgreSQL, the user must have the CREATEDB
+permission: `ALTER USER jasper CREATEDB`.
+
 You can use environment variables to configure JasperServer container:
 
 | Environment variable | Default value | Note |
 | -------------------- | ------------- | ----- |
-| JS_DB_TYPE | mysql | postgres is not supported atm |
+| JS_DB_TYPE | mysql, postgres | |
 | JS_DB_HOST | jasper.db | |
-| JS_DB_PORT | 3306 | |
+| JS_DB_PORT | mysql: 3306, postgres: 5432 | |
 | JS_DB_USER | jasper | |
 | JS_DB_PASSWORD | my_password | |
 | JS_Xmx | 512m | |
