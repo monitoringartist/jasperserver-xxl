@@ -1,4 +1,6 @@
-# Jasper Server [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/monitoringartist/jasperserver-xxl) [![](https://badge.imagelayers.io/monitoringartist/jasperserver-xxl:latest.svg)](https://imagelayers.io/?images=monitoringartist/jasperserver-xxl:latest)
+[<img src="https://monitoringartist.github.io/managed-by-monitoringartist.png" alt="Managed by Monitoring Artist: DevOps / Docker / Kubernetes / AWS ECS / Zabbix / Zenoss / Terraform / Monitoring" align="right"/>](http://www.monitoringartist.com 'DevOps / Docker / Kubernetes / AWS ECS / Zabbix / Zenoss / Terraform / Monitoring')
+
+# Jasper Server
 
 Dockerized [TIBCO JasperReports Server Community Edition](http://community.jaspersoft.com/download). Quick start:
 
@@ -13,7 +15,7 @@ docker run \
     --volumes-from jasperserver-db-storage \
     --env="MARIADB_USER=jasper" \
     --env="MARIADB_PASS=my_password" \
-    -d zabbix/zabbix-db-mariadb:latest
+    -d monitoringartist/zabbix-db-mariadb:latest
 
 # Start JasperServer    
 docker run \
@@ -70,12 +72,13 @@ You can use environment variables to configure JasperServer container:
 
 * [docker-compose for dockerized jasperserver-xxl](https://github.com/monitoringartist/jasperserver-xxl/blob/master/docker-compose.yml)
 
-# Author
 
-[Devops Monitoring zExpert](http://www.jangaraj.com 'DevOps / Docker / Kubernetes / Zabbix / Zenoss / Monitoring'), 
-who loves monitoring systems, which start with letter Z. 
-Those are Zabbix and Zenoss.
+Author
+======
 
-Professional monitoring services:
+[Devops Monitoring Expert](http://www.jangaraj.com 'DevOps / Docker / Kubernetes / AWS ECS / Google GCP / Zabbix / Zenoss / Terraform / Monitoring'),
+who loves monitoring systems, which start with letter Z. Those are Zabbix and Zenoss.
 
-[![Monitoring Artist](http://monitoringartist.com/img/github-monitoring-artist-logo.jpg)](http://www.monitoringartist.com 'DevOps / Docker / Kubernetes / Zabbix / Zenoss / Monitoring')
+Professional devops / monitoring services:
+
+[![Monitoring Artist](http://monitoringartist.com/img/github-monitoring-artist-logo.jpg)](http://www.monitoringartist.com 'DevOps / Docker / Kubernetes / AWS ECS / Google GCP / Zabbix / Zenoss / Terraform / Monitoring')
