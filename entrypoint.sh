@@ -3,10 +3,15 @@ set -e
 
 setup_jasperserver() {
     JS_DB_TYPE=${JS_DB_TYPE:-mysql}
+    # Allow either postgres or postgresql
+    [ "$JS_DB_TYPE" = "postgres" ] && JS_DB_TYPE=postgresql
     JS_DB_HOST=${JS_DB_HOST:-jasper.db}
     JS_DB_USER=${JS_DB_USER:-jasper}
     JS_DB_PASSWORD=${JS_DB_PASSWORD:-my_password}
-    JS_DB_PORT=${JS_DB_PORT:-3306}
+    # Choose the correct default port
+    dfl=3306
+    [ "$JS_DB_TYPE" = "postgresql" ] && dfl=5432
+    JS_DB_PORT=${JS_DB_PORT:-$dfl}
     JS_ENABLE_SAVE_TO_HOST_FS=${JS_ENABLE_SAVE_TO_HOST_FS:-false}
     pushd ${JASPERSERVER_BUILD}
     cp sample_conf/${JS_DB_TYPE}_master.properties default_master.properties
