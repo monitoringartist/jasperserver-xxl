@@ -13,6 +13,7 @@ setup_jasperserver() {
     [ "$JS_DB_TYPE" = "postgresql" ] && dfl=5432
     JS_DB_PORT=${JS_DB_PORT:-$dfl}
     JS_ENABLE_SAVE_TO_HOST_FS=${JS_ENABLE_SAVE_TO_HOST_FS:-false}
+    JS_DISABLE_CSRFGUARD=${JS_DISABLE_CSRFGUARD:-false}
     pushd ${JASPERSERVER_BUILD}
     cp sample_conf/${JS_DB_TYPE}_master.properties default_master.properties
     sed -i -e "s|^appServerDir.*$|appServerDir = $CATALINA_HOME|g; s|^dbHost.*$|dbHost=$JS_DB_HOST|g; s|^dbUsername.*$|dbUsername=$JS_DB_USER|g; s|^dbPassword.*$|dbPassword=$JS_DB_PASSWORD|g" default_master.properties
@@ -33,6 +34,12 @@ setup_jasperserver() {
         ./js-ant $i
     done
 
+    if [ "${JS_DISABLE_CSRFGUARD}" = "true" ]; then
+        # CSRF abd running behind a reverse proxy do not coexist, see:
+	# http://community.jaspersoft.com/documentation/tibco-jasperreports-server-security-guide/v630/configuring-csrf-protection
+        echo 'org.owasp.csrfguard.Enabled = false' >> /usr/local/tomcat/webapps/jasperserver/WEB-INF/csrf/jrs.csrfguard.properties
+    fi
+    
     if [ "${JS_ENABLE_SAVE_TO_HOST_FS}" = "true" ]; then
     	# Change the value of enableSaveToHostFS to true
     	sed -i "s/\(<property name=\"enableSaveToHostFS\" value=\"\).*\(\"\/>\)/\1${JS_ENABLE_SAVE_TO_HOST_FS}\2/" /usr/local/tomcat/webapps/jasperserver/WEB-INF/applicationContext.xml

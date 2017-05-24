@@ -62,7 +62,8 @@ You can use environment variables to configure JasperServer container:
 | JS_Xmx | 512m | |
 | JS_MaxPermSize | 256m | |
 | JS_CATALINA_OPTS | -XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC -XX:+CMSIncrementalMode -XX:+CMSIncrementalPacing -XX:+CMSParallelRemarkEnabled -XX:+UseCompressedOops -XX:+UseCMSInitiatingOccupancyOnly | |
-| JS_ENABLE_SAVE_TO_HOST_FS | false | This enable the scheduled reports to be saved in the host |
+| JS_DISABLE_CSRFGUARD | false | This disables CSRF Guard, which is necessary when using Jasper Server behind a reverse proxy. |
+| JS_ENABLE_SAVE_TO_HOST_FS | false | This allows the scheduled reports to be saved into the local filesystem. You will need to use a Docker volume to be able to see the generate files outside of the container. |
 | JS_MAIL_HOST | mail.example.com | |
 | JS_MAIL_PORT | 25 | |
 | JS_MAIL_PROTOCOL | smtp | |
