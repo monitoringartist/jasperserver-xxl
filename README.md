@@ -2,8 +2,9 @@
 
 # Jasper Server
 
-[![DockerHub pulls](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Pulls)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg)
-[![DockerHub stars](https://img.shields.io/docker/stars/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Stars)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg)
+![Unsupported](https://img.shields.io/badge/development_status-unsupported-red.svg) [![DockerHub pulls](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Pulls)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg) [![DockerHub stars](https://img.shields.io/docker/stars/monitoringartist/jasperserver-xxl.svg?style=plastic&label=DockerHub%20Stars)](https://img.shields.io/docker/pulls/monitoringartist/jasperserver-xxl.svg)
+
+Please use official project https://github.com/TIBCOSoftware/js-docker. If you want to maintain this repository, please contact me.
 
 Dockerized [TIBCO JasperReports Server Community Edition](http://community.jaspersoft.com/download). Quick start:
 
