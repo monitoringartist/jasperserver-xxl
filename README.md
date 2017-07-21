@@ -69,6 +69,8 @@ You can use environment variables to configure JasperServer container:
 | JS_MAIL_PROTOCOL | smtp | |
 | JS_MAIL_USERNAME | admin | |
 | JS_MAIL_PASSWORD | password | |
+| JS_MAIL_AUTH | false | This enable SMTP Authentication |
+| JS_MAIL_TLS | false | This enable TLS protocol |
 | JS_MAIL_SENDER | admin@example.com | |
 | JS_WEB_DEPLOYMENT_URI | http://localhost:8080/jasperserver | |
 
