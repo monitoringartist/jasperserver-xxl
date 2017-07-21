@@ -23,10 +23,22 @@ setup_jasperserver() {
     JS_MAIL_USERNAME=${JS_MAIL_USERNAME:-admin}
     JS_MAIL_PASSWORD=${JS_MAIL_PASSWORD:-password}
     JS_MAIL_SENDER=${JS_MAIL_SENDER:-admin@example.com}
+    JS_MAIL_AUTH=${JS_MAIL_AUTH:-false}
+    JS_MAIL_TLS=${JS_MAIL_TLS:-false}
     JS_WEB_DEPLOYMENT_URI=${JS_WEB_DEPLOYMENT_URI:-http://localhost:8080/jasperserver}
 
-    sed -i -e "s|^# quartz\.mail\.sender\.host.*$|quartz.mail.sender.host = $JS_MAIL_HOST|g; s|^# quartz\.mail\.sender\.port.*$|quartz.mail.sender.port = $JS_MAIL_PORT|g; s|^# quartz\.mail\.sender\.protocol.*$|quartz.mail.sender.protocol = $JS_MAIL_PROTOCOL|g; s|^# quartz\.mail\.sender\.username.*$|quartz.mail.sender.username = $JS_MAIL_USERNAME|g; s|^# quartz\.mail\.sender\.password.*$|quartz.mail.sender.username = $JS_MAIL_PASSWORD|g; s|^# quartz\.mail\.sender\.from.*$|quartz.mail.sender.from = $JS_MAIL_SENDER|g; s|^# quartz\.web\.deployment\.uri.*$|quartz.web.deployment.uri = $JS_WEB_DEPLOYMENT_URI|g" default_master.properties
-    
+    sed -i -e "s|^# quartz\.mail\.sender\.host.*$|quartz.mail.sender.host = $JS_MAIL_HOST|g; s|^# quartz\.mail\.sender\.port.*$|quartz.mail.sender.port = $JS_MAIL_PORT|g; s|^# quartz\.mail\.sender\.protocol.*$|quartz.mail.sender.protocol = $JS_MAIL_PROTOCOL|g; s|^# quartz\.mail\.sender\.username.*$|quartz.mail.sender.username = $JS_MAIL_USERNAME|g; s|^# quartz\.mail\.sender\.password.*$|quartz.mail.sender.password = $JS_MAIL_PASSWORD|g; s|^# quartz\.mail\.sender\.from.*$|quartz.mail.sender.from = $JS_MAIL_SENDER|g; s|^# quartz\.web\.deployment\.uri.*$|quartz.web.deployment.uri = $JS_WEB_DEPLOYMENT_URI|g" default_master.properties
+
+    if [ "${JS_MAIL_AUTH}" = "true" ]; then
+        # Change the value of mail.smtp.auth to true
+        sed -i "s/\(<prop key=\"mail.smtp.auth\">\).*\(<\/prop>\)/\1${JS_MAIL_AUTH}\2/" /usr/local/tomcat/webapps/jasperserver/WEB-INF/applicationContext-report-scheduling.xml
+    fi
+
+    if [ "${JS_MAIL_TLS}" = "true" ]; then
+        # Add mail.smtp.starttls.enable after mail.smtp.sendpartial
+        sed -i "/<prop key=\"mail.smtp.sendpartial\">true<\/prop>/a <prop key=\"mail.smtp.starttls.enable\">true<\/prop>" /usr/local/tomcat/webapps/jasperserver/WEB-INF/applicationContext-report-scheduling.xml
+    fi
+
     # DB seeding
     ./js-ant create-js-db init-js-db-ce import-minimal-ce || true
     for i in $@; do
