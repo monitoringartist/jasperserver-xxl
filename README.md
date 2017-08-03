@@ -55,7 +55,7 @@ You can use environment variables to configure JasperServer container:
 
 | Environment variable | Default value | Note |
 | -------------------- | ------------- | ----- |
-| JS_DB_TYPE | mysql, postgres | |
+| JS_DB_TYPE | mysql, postgresql | |
 | JS_DB_HOST | jasper.db | |
 | JS_DB_PORT | mysql: 3306, postgres: 5432 | |
 | JS_DB_USER | jasper | |
